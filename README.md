@@ -1,5 +1,13 @@
 # README
 
+### ⚙️ Install the dependencies
+Run:
+
+```shell
+pip install -r requirements.txt
+```
+
+
 ### 📂 Project Folder Structure
 
 ```
