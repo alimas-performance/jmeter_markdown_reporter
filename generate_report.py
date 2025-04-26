@@ -1,20 +1,35 @@
 import os
 import sys
 from typing import List
-
+import logging
+import yaml
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Constants
-GRAPH_FILES = [
-    'error_rate_pie.png',
-    'response_code_distribution_pie.png',
-    'avg_response_time_by_label.png',
-    'error_rate_over_time.png',
-    'response_time_over_time_by_label.png',
-    'p90_response_time_by_label.png',
-]
+# Setup Logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+)
 
+class ConfigLoader:
+    """Loads configuration from a YAML file."""
+
+    def __init__(self, config_path: str = 'config.yaml'):
+        self.config_path = config_path
+        self.config = self._load_config()
+
+    def _load_config(self) -> dict:
+        if not os.path.isfile(self.config_path):
+            raise FileNotFoundError(f"❌ Config file not found: {self.config_path}")
+        with open(self.config_path, 'r') as file:
+            return yaml.safe_load(file)
+
+    def get_graph_files(self) -> List[str]:
+        return self.config.get('graph_files', [])
+
+    def get_default_output_dir(self) -> str:
+        return self.config.get('default_output_dir', 'output')
 
 class JTLReader:
     """Reads and preprocesses JMeter JTL (JMeter Test Log) files.
@@ -202,12 +217,16 @@ def main(filepath: str, output_dir: str = 'output'):
     Args:
         filepath (str): Path to the JMeter JTL file to analyze
         output_dir (str, optional): Directory where the report and graphs will be saved.
-            Defaults to 'output'.
+            Defaults to 'output' or config value.
 
     Example:
         >>> python generate_report.py results.jtl ./reports
     """
     try:
+        config = ConfigLoader()
+        graph_files = config.get_graph_files()
+        output_dir = output_dir or config.get_default_output_dir()
+
         reader = JTLReader(filepath)
         df = reader.read()
 
@@ -220,12 +239,13 @@ def main(filepath: str, output_dir: str = 'output'):
         graphs.plot_response_code_distribution_pie()
 
         report = ReportGenerator(df, output_dir)
-        report.create_markdown_report(GRAPH_FILES)
+        report.create_markdown_report(graph_files)
 
-        print(f"✅ Report generated successfully in '{output_dir}/report.md'")
+        logging.info(f"✅ Report generated successfully in '{output_dir}/report.md'")
+
 
     except Exception as e:
-        print(f"❌ Error: {e}")
+        logging.error(f"❌ Error: {e}")
 
 
 if __name__ == '__main__':
