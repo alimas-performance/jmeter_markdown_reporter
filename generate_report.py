@@ -93,8 +93,8 @@ class GraphGenerator:
 
     def plot_error_rate_over_time(self) -> None:
         df = self.df.set_index('timeStamp')
-        errors = (~df['success']).resample('10S').sum()
-        total = df['success'].resample('10S').count()
+        errors = (~df['success']).resample('1s').sum()
+        total = df['success'].resample('1s').count()
         error_rate = (errors / total).fillna(0)
 
         fig, ax = plt.subplots(figsize=(12, 6))
