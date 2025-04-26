@@ -30,7 +30,7 @@ Save your results.jtl in the same folder as generate_report.py.
 Run:
 
 ```shell
-python generate_report.py
+python generate_report.py results.jtl output_folder
 ```
 
 Your graphs and report.md file will be inside the /output/ folder!
