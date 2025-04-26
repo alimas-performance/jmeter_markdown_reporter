@@ -2,6 +2,7 @@
 
 ### 📂 Project Folder Structure
 
+```
 jmeter_markdown_reporter/
 ├── results.jtl
 ├── generate_report.py
@@ -13,6 +14,7 @@ jmeter_markdown_reporter/
 │   ├── error_rate_pie.png
 │   ├── response_code_pie.png
 │   └── report.md
+```
 
 ### ✅ Instructions to Run
 Save your results.jtl in the same folder as generate_report.py.
