@@ -7,12 +7,12 @@ import matplotlib.pyplot as plt
 
 # Constants
 GRAPH_FILES = [
+    'error_rate_pie.png',
+    'response_code_distribution_pie.png',
     'avg_response_time_by_label.png',
     'error_rate_over_time.png',
     'response_time_over_time_by_label.png',
     'p90_response_time_by_label.png',
-    'error_rate_pie.png',
-    'response_code_distribution_pie.png',
 ]
 
 
