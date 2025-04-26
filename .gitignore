@@ -1,0 +1,9 @@
+# Python Files
+venv/
+
+
+# JMeter
+*.jtl
+
+# Application
+output/
