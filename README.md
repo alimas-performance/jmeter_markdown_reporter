@@ -14,7 +14,7 @@ pip install -r requirements.txt
 jmeter_markdown_reporter/
 ├── results.jtl
 ├── generate_report.py
-├── output/
+├── output_folder/
 │   ├── avg_response_time.png
 │   ├── error_rate_over_time.png
 │   ├── response_time_over_time.png
@@ -33,4 +33,4 @@ Run:
 python generate_report.py results.jtl output_folder
 ```
 
-Your graphs and report.md file will be inside the /output/ folder!
+Your graphs and report.md file will be inside the /output_folder/ folder!
