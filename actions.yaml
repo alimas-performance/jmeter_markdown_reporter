@@ -1,0 +1,28 @@
+# action.yml
+name: JMeter Markdown Reporter
+description: Create a Markdown report from JMeter test results in JTL format
+author: Angel Limas - https://www.linkedin.com/in/angel-eliseo-limas-colunga/
+
+branding:
+  color: orange
+  icon: codesandbox
+
+inputs:
+  jtl-file:
+    required: true
+    description: JTL File from JMeter './results.jtl'
+  results-folder:
+    required: false
+    description: Folder where the report will be stored './output'
+    default: output
+  args:
+    required: false
+    description: Optional arguments. For more details https://github.com/alimas-performance/jmeter_markdown_reporter/tree/v1.3
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+  - "${{ inputs.jtl-file }}"
+  - "${{ inputs.results-folder }}"
+  - "${{ inputs.args }}"
