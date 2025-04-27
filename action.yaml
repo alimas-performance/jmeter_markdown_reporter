@@ -4,8 +4,8 @@ description: Create a Markdown report from JMeter test results in JTL format
 author: Angel Limas - https://www.linkedin.com/in/angel-eliseo-limas-colunga/
 
 branding:
+  icon: 'codesandbox'
   color: orange
-  icon: codesandbox
 
 inputs:
   jtl-file:
