@@ -1,0 +1,9 @@
+.git
+.gitignore
+.idea
+venv
+output/*
+*.jtl
+__pycache__
+*.pyc
+samples

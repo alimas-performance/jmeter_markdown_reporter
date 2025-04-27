@@ -1,0 +1,1 @@
+docker run --rm -v ${PWD}/results.jtl:/app/results.jtl -v ${PWD}/output:/app/output jmeter-report-generator results.jtl output
