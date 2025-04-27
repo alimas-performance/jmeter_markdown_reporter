@@ -60,9 +60,9 @@ Your graphs and report.md file will be inside the /output_folder/ folder! or the
 ### 🐋 Running From Docker Image
 First compile the image
 ```shell
-docker build -t jmeter-report-generator .
+docker build -t jmeter-markdown-reporter .
 ```
 Now use the docker image like this:
 ```shell
-docker run --rm -v ${PWD}/results.jtl:/app/results.jtl -v ${PWD}/output:/app/output jmeter-report-generator results.jtl output
+docker run --rm -v ${PWD}/results.jtl:/app/results.jtl -v ${PWD}/output:/app/output jmeter-markdown-reporter results.jtl output
 ```
