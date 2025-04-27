@@ -57,7 +57,7 @@ python generate_report.py results.jtl
 
 Your graphs and report.md file will be inside the /output_folder/ folder! or the folder you setup in the config.yaml
 
-### Running From Docker Image
+### 🐋 Running From Docker Image
 First compile the image
 ```shell
 docker build -t jmeter-report-generator .
