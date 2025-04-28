@@ -2,7 +2,7 @@
 FROM python:3.11-slim
 
 # Set working directory
-WORKDIR /app
+WORKDIR .
 
 # Copy requirements first to leverage Docker cache
 COPY requirements.txt .
@@ -11,7 +11,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application
-COPY . /app
+COPY . .
 
 # Making main python file executable
 RUN chmod +x generate_report.py
@@ -23,5 +23,5 @@ RUN mkdir -p output
 ENV PYTHONUNBUFFERED=1
 
 # Command to run the script
-ENTRYPOINT ["python", "/app/generate_report.py"]
+ENTRYPOINT ["python", "generate_report.py"]
 CMD ["results.jtl", "output"]
