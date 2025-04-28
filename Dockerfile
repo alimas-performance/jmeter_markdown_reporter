@@ -23,5 +23,5 @@ RUN mkdir -p output
 ENV PYTHONUNBUFFERED=1
 
 # Command to run the script
-ENTRYPOINT ["python", "generate_report.py"]
+ENTRYPOINT ["python", "/app/generate_report.py"]
 CMD ["results.jtl", "output"]
