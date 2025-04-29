@@ -211,7 +211,7 @@ class ReportGenerator:
                 f.write(f'![{graph}]({graph})\n\n')
 
 
-def main(filepath: str, output_dir: str = 'output'):
+def main(filepath: str, output_dir: str = 'output', config_path: str = "config.yaml"):
     """Main entry point for generating the performance analysis report.
 
     Args:
@@ -223,7 +223,7 @@ def main(filepath: str, output_dir: str = 'output'):
         >>> python generate_report.py results.jtl ./reports
     """
     try:
-        config = ConfigLoader()
+        config = ConfigLoader(config_path)
         graph_files = config.get_graph_files()
         output_dir = output_dir or config.get_default_output_dir()
 
@@ -255,4 +255,8 @@ if __name__ == '__main__':
 
     jtl_file = sys.argv[1]
     output_directory = sys.argv[2] if len(sys.argv) > 2 else 'output'
-    main(jtl_file, output_directory)
+    if len(sys.argv) > 3:
+        config_path = sys.argv[3]
+        main(jtl_file, output_directory, config_path)
+    else:
+        main(jtl_file, output_directory)
