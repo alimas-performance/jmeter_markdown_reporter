@@ -15,6 +15,10 @@ inputs:
     required: false
     description: Folder where the report will be stored './output'
     default: output
+  config-file:
+    required: false
+    description: Path and file where the yaml config file will be pulled. Default value will work just fine.
+    default: "/app/config.yaml"
   args:
     required: false
     description: Optional arguments. For more details https://github.com/alimas-performance/jmeter_markdown_reporter/tree/v1.3
@@ -25,4 +29,5 @@ runs:
   args:
   - "${{ inputs.jtl-file }}"
   - "${{ inputs.results-folder }}"
+  - "${{ inputs.config-file }}"
   - "${{ inputs.args }}"
